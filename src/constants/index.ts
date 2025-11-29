@@ -491,7 +491,13 @@ export const locations = {
 
 const INITIAL_Z_INDEX = 1000
 
-const WINDOW_CONFIG = {
+type WindowConfig = {
+  isOpen: boolean
+  zIndex: number
+  data: { something: string } | null
+}
+
+const WINDOW_CONFIG: Record<string, WindowConfig> = {
   finder: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   contact: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   resume: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
