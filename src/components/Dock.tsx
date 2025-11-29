@@ -3,8 +3,10 @@ import { useRef } from 'react'
 import { Tooltip } from 'react-tooltip'
 import { useGSAP } from '@gsap/react'
 import { dockApps } from '#constants'
+import useWindowStore from '#store/window'
 
 export const Dock = () => {
+  const { windows, openWindow, closeWindow } = useWindowStore()
   const dockRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
@@ -51,9 +53,20 @@ export const Dock = () => {
     }
   }, [])
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const toggleApp = (_app: { id: string; canOpen: boolean }) => {
-    // TODO: implement window logic
+  const toggleApp = (app: { id: string; canOpen: boolean }) => {
+    if (!app.canOpen) return
+
+    const window = windows[app.id]
+    if (!window) {
+      console.error(`Window not found for app: ${app.id}`)
+      return
+    }
+
+    if (window.isOpen) {
+      closeWindow(app.id)
+    } else {
+      openWindow(app.id)
+    }
   }
 
   return (
