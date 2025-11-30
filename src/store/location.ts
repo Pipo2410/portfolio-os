@@ -1,14 +1,13 @@
-import { locations } from '#constants'
+import { locations, type Location } from '#constants'
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 
 const DEFAULT_LOCATION = locations.work
 
 type LocationStore = {
-  activeLocation: (typeof locations)[keyof typeof locations]
-  setActiveLocation: (
-    location: (typeof locations)[keyof typeof locations]
-  ) => void
+  activeLocation: Location
+  // activeLocation: (typeof locations)[keyof typeof locations]
+  setActiveLocation: (location: Location) => void
   resetActiveLocation: () => void
 }
 
