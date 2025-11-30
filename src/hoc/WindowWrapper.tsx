@@ -1,10 +1,14 @@
+import type { WINDOW_CONFIG } from '#constants'
 import useWindowStore from '#store/window'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { Draggable } from 'gsap/Draggable'
 import React, { useLayoutEffect, useRef } from 'react'
 
-export const WindowWrapper = (Component: React.FC, windowKey: string) => {
+export const WindowWrapper = (
+  Component: React.FC,
+  windowKey: keyof typeof WINDOW_CONFIG
+) => {
   const Wrapped = () => {
     const { focusWindow, windows } = useWindowStore()
     const { isOpen, zIndex } = windows[windowKey]
