@@ -3,22 +3,8 @@ import { navIcons, navLinks } from '#constants'
 import useWindowStore from '#store/window'
 
 export const Navbar = () => {
-  const { windows, openWindow, closeWindow } = useWindowStore()
+  const { openWindow } = useWindowStore()
 
-  const toggleApp = (app: { id: string; canOpen: boolean }) => {
-    if (!app.canOpen) return
-    const window = windows[app.id]
-
-    if (!window) {
-      console.error(`Window not found for app: ${app.id}`)
-      return
-    }
-    if (window.isOpen) {
-      closeWindow(app.id)
-    } else {
-      openWindow(app.id)
-    }
-  }
   return (
     <nav>
       <div>
@@ -27,10 +13,8 @@ export const Navbar = () => {
 
         <ul>
           {navLinks.map(({ id, name, type }) => (
-            <li key={id}>
-              <p onClick={() => toggleApp({ id: type, canOpen: true })}>
-                {name}
-              </p>
+            <li key={id} onClick={() => openWindow(type)}>
+              <p>{name}</p>
             </li>
           ))}
         </ul>
