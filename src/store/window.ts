@@ -5,10 +5,7 @@ import { immer } from 'zustand/middleware/immer'
 type WindowStore = {
   windows: typeof WINDOW_CONFIG
   nextZIndex: number
-  openWindow: (
-    windowKey: keyof typeof WINDOW_CONFIG,
-    data?: { something: string } | null
-  ) => void
+  openWindow: (windowKey: keyof typeof WINDOW_CONFIG, data?: any) => void
   closeWindow: (windowKey: keyof typeof WINDOW_CONFIG) => void
   focusWindow: (windowKey: keyof typeof WINDOW_CONFIG) => void
 }
