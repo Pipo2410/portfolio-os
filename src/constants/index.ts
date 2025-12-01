@@ -214,7 +214,7 @@ export {
   gallery,
 }
 
-const WORK_LOCATION = {
+const WORK_LOCATION: Location = {
   id: 1,
   type: 'work',
   name: 'Work',
@@ -482,7 +482,41 @@ const TRASH_LOCATION = {
   ],
 }
 
-export const locations = {
+export type Locations = {
+  [key: string]: Location
+}
+
+export type Location = {
+  id: number
+  name: string
+  icon: string
+  kind: string
+  type: string
+  children: Project[]
+}
+
+export type Project = {
+  id: number
+  name: string
+  icon: string
+  kind: string
+  position?: string
+  windowPosition?: string
+  children?: ProjectDetails[]
+}
+
+export type ProjectDetails = {
+  id: number
+  name: string
+  icon: string
+  kind: string
+  fileType: string
+  position: string
+  description?: string[]
+  href?: string
+  imageUrl?: string
+}
+export const locations: Locations = {
   work: WORK_LOCATION,
   about: ABOUT_LOCATION,
   resume: RESUME_LOCATION,
