@@ -528,7 +528,7 @@ const INITIAL_Z_INDEX = 1000
 type WindowConfig = {
   isOpen: boolean
   zIndex: number
-  data: { something: string } | null
+  data: any
 }
 
 const WINDOW_CONFIG: Record<string, WindowConfig> = {
