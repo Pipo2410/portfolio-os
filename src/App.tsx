@@ -1,7 +1,7 @@
 import gsap from 'gsap'
 import { Draggable } from 'gsap/Draggable'
 
-import { Dock, Navbar, Welcome } from '#components'
+import { Dock, Navbar, Welcome, Home } from '#components'
 import {
   Contact,
   Finder,
@@ -28,6 +28,7 @@ const App = () => {
       <Image />
       <Finder />
       <Contact />
+      <Home />
     </main>
   )
 }
